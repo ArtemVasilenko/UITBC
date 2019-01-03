@@ -16,6 +16,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.makeKeyAndVisible()
+        
+        let firstVC = ViewController()
+        let secondVC = SecondViewController()
+        
+        let firstNavController = UINavigationController(rootViewController: firstVC)
+        let secondNavController = UINavigationController(rootViewController: secondVC)
+        
+        let tabBarVC = UITabBarController()
+        
+        
+        //tabBarVC.setViewControllers([firstVC, secondVC], animated: true)
+        tabBarVC.setViewControllers([firstNavController, secondNavController], animated: true)
+
+        //добавили в табБар другие контроллеры
+        
+        self.window?.rootViewController = tabBarVC
+        secondVC.reloadInputViews()
+        
+        
+        
         return true
     }
 
